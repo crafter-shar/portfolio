@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharmaine Bowen - UX Designer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Red+Hat+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1b1b1b;
+            font-family: 'Nunito', sans-serif;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 160px 160px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
+            max-width: 549px;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .name-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.15;
+            letter-spacing: 0;
+        }
+
+        .role {
+            font-family: 'Red Hat Mono', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.24px;
+            color: #ffffff;
+        }
+
+        /* Description Section */
+        .description {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.32px;
+            line-height: 1.5;
+        }
+
+        .description-primary {
+            color: #ffffff;
+        }
+
+        .description-secondary {
+            color: #888888;
+        }
+
+        /* Contact Section */
+        .contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        .contact-text {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.32px;
+            line-height: 1.5;
+        }
+
+        .email-link {
+            color: #ffffff;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .email-link:hover {
+            opacity: 0.8;
+        }
+
+        .copy-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            font-size: 16px;
+            line-height: 1;
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            font-feature-settings: 'liga';
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            padding: 0;
+        }
+
+        .copy-icon:hover {
+            opacity: 0.8;
+        }
+
+        .copy-icon:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
+        .copy-tooltip {
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 10px);
+            transform: translateX(-50%) translateY(4px);
+            background: #ffffff;
+            color: #1b1b1b;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1;
+            padding: 6px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .copy-tooltip.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .copy-hover-label {
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 10px);
+            transform: translateX(-50%) translateY(4px);
+            background: #ffffff;
+            color: #1b1b1b;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1;
+            padding: 6px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .copy-wrap:hover .copy-hover-label,
+        .copy-wrap:focus-within .copy-hover-label {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .copy-wrap.is-copied .copy-hover-label {
+            opacity: 0;
+        }
+
+        .copy-wrap.is-copied .copy-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .linkedin-link {
+            color: #ffffff;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .linkedin-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 24px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .contact {
+                flex-wrap: wrap;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .contact-text {
+                font-size: 14px;
+            }
+        }
+
+        /* Accessibility */
+        a {
+            color: inherit;
+        }
+
+        button:focus, a:focus {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Header Section -->
+            <div class="header">
+                <div class="name-section">
+                    <h1>Sharmaine Bowen</h1>
+                    <p class="role">Senior UX Designer @ Booz Allen Hamilton</p>
+                </div>
+
+                <!-- Description -->
+                <div class="description">
+                    <p class="description-primary">
+                        Currently modernizing complex, information-dense enterprise systems through end-to-end product workflows, design systems architecture, and 508-compliant implementation.
+                    </p>
+                    <p class="description-secondary">
+                        Work samples are omitted to honor client non-disclosure agreements and proprietary data restrictions. Feel free to contact me directly to discuss my specific skills, background, and work history.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact">
+                <span class="contact-text">Let's connect via email:</span>
+                <a href="mailto:hello@sharmainebowen.com" class="email-link">hello@sharmainebowen.com</a>
+                <div class="copy-wrap">
+                    <button type="button" class="copy-icon" onclick="copyToClipboard('hello@sharmainebowen.com')" aria-label="Copy email to clipboard">
+                        content_copy
+                    </button>
+                    <span class="copy-hover-label">Copy email to clipboard</span>
+                    <span id="copyTooltip" class="copy-tooltip" role="status" aria-live="polite">Email copied</span>
+                </div>
+                <span class="contact-text">or</span>
+                <a href="https://linkedin.com/in/sharmainebowen" target="_blank" class="linkedin-link">linkedin</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showCopyTooltip() {
+            const wrap = document.querySelector('.copy-wrap');
+            const tooltip = document.getElementById('copyTooltip');
+            if (!wrap || !tooltip) return;
+
+            wrap.classList.add('is-copied');
+            tooltip.classList.add('visible');
+            clearTimeout(showCopyTooltip.timeoutId);
+            showCopyTooltip.timeoutId = setTimeout(() => {
+                wrap.classList.remove('is-copied');
+                tooltip.classList.remove('visible');
+            }, 1800);
+        }
+
+        function copyToClipboard(text) {
+            const fallbackCopy = () => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showCopyTooltip();
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text)
+                    .then(() => showCopyTooltip())
+                    .catch(() => {
+                        console.error('Clipboard API failed. Falling back to execCommand.');
+                        fallbackCopy();
+                    });
+            } else {
+                fallbackCopy();
+            }
+        }
+    </script>
+</body>
+</html>
